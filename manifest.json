@@ -1,0 +1,15 @@
+{
+  "name": "Basketball Percentage Tracker",
+  "short_name": "BBall %",
+  "description": "Basketball shooting workout tracker with daily routine and shooting percentages.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#11161d",
+  "theme_color": "#f1701f",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
