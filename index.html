@@ -17,12 +17,24 @@
     --orange: #f1701f; --green: #2fbf6b; --red: #e2495a; --blue: #4ca3ff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; }
+  html, body { height: 100%; overscroll-behavior: none; }
   body {
     background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: flex; flex-direction: column; overflow: hidden;
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
   }
+  /* Non-text UI: no long-press callout / text selection on iOS */
+  button, nav, header, .card, .stat, .gc-stat, .avatar, .p-avatar, label {
+    -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;
+  }
+  /* Tappable elements: kill 300ms delay + double-tap zoom */
+  button, a, input, textarea, select, .logbtn, .tbtn, .wl-btn { touch-action: manipulation; }
+  /* Inputs stay selectable */
+  input, textarea { -webkit-user-select: text; user-select: text; }
+  /* iOS accent color for date picker, focus rings */
+  input { accent-color: var(--orange); }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--orange); }
 
   /* ---- Header ---- */
   header {
@@ -152,7 +164,7 @@
   .setting .fields { display: flex; gap: 10px; }
   .field { flex: 1; }
   .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .field input { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 9px; font-size: 15px; text-align: center; }
+  .field input { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 9px; font-size: 16px; text-align: center; }
   .field input[type="text"] { text-align: left; }
   .danger { width: 100%; background: transparent; color: var(--red); border: 1px solid var(--red); border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; margin-top: 6px; }
   .note { color: var(--muted); font-size: 12px; line-height: 1.5; margin-top: 14px; }
@@ -188,7 +200,7 @@
   .p-del { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 7px 10px; font-size: 12px; }
   .p-del:disabled { opacity: .3; }
   .add-row { display: flex; gap: 8px; margin-top: 6px; }
-  .add-row input { flex: 1; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+  .add-row input { flex: 1; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 16px; }
   .add-row button { background: var(--orange); color: #1a1208; border: 0; border-radius: 10px; padding: 10px 16px; font-size: 14px; font-weight: 700; }
 
   /* ---- Game form ---- */
@@ -204,7 +216,7 @@
     border-radius: 10px; padding: 11px 8px; font-size: 16px; text-align: center;
   }
   .ff input[type="text"], .ff input[type="date"] { text-align: left; padding: 11px 12px; }
-  .ff textarea { resize: none; height: 70px; font-family: inherit; text-align: left; padding: 11px 12px; font-size: 14px; }
+  .ff textarea { resize: none; height: 70px; font-family: inherit; text-align: left; padding: 11px 12px; font-size: 16px; }
   .ff .ro { color: var(--orange); font-weight: 700; background: var(--bg2); }
 
   .wl-row { display: flex; gap: 8px; }
@@ -226,7 +238,7 @@
   #onboarding h2 span { color: var(--orange); }
   #onboarding p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 300px; }
   #onboarding .ob-row { display: flex; gap: 8px; width: 100%; max-width: 320px; }
-  #onboarding .ob-row input { flex: 1; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 15px; }
+  #onboarding .ob-row input { flex: 1; background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 16px; }
   #onboarding .ob-row button { background: var(--orange); color: #1a1208; border: 0; border-radius: 12px; padding: 13px 18px; font-size: 15px; font-weight: 800; }
 
   /* ---- Toast ---- */
